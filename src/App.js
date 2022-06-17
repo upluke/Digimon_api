@@ -17,8 +17,19 @@ class App extends Component {
   }
 
   render(){
+
     return (
       <div className="App">
+        <input 
+          onChange={(e)=>{
+            const searchItem=e.target.value.toLocaleLowerCase()
+            let filteredDigimon=this.state.digimon.filter((dm)=>{
+                  return dm.name.toLocaleLowerCase().includes(searchItem)
+            })
+
+            console.log(filteredDigimon, "%%%%%")
+          }} 
+          placeholder="Search your digitmon..." />
         <ul>
           {this.state.digimon.map((monster)=>{
             return (
