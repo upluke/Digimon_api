@@ -26,7 +26,7 @@ class App extends Component {
             let filteredDigimon=this.state.digimon.filter((dm)=>{
                   return dm.name.toLocaleLowerCase().includes(searchItem)
             })
-
+            this.setState({digimon:filteredDigimon})
             console.log(filteredDigimon, "%%%%%")
           }} 
           placeholder="Search your digitmon..." />
