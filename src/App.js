@@ -2,7 +2,6 @@ import { Component } from "react";
 
 class App extends Component {
   constructor(){
-    console.log("1")
     super()
     this.state={
       digimon:[],
@@ -11,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    console.log("2")
+   
     fetch('https://digimon-api.vercel.app/api/digimon/?_limit=10')
     .then((response)=>response.json())
     .then((data)=>{
@@ -20,19 +19,21 @@ class App extends Component {
     })
     // .then((data)=> this.setState({digimon:data}))
   }
+
+  onsearchChange=(e)=>{
+    this.setState({searchItem: e.target.value.toLocaleLowerCase()})
+  }
  
   render(){
-    console.log('3')
-    const filteredDigimon=this.state.digimon.filter((dm)=>{
-      return dm.name.toLocaleLowerCase().includes(this.state.searchItem)
+    const {digimon, searchItem}= this.state
+    const filteredDigimon=digimon.filter((dm)=>{
+      return dm.name.toLocaleLowerCase().includes(searchItem)
     })
 
     return (
       <div className="App">
         <input 
-          onChange={(e)=>{
-            this.setState({searchItem: e.target.value.toLocaleLowerCase()})
-          }} 
+          onChange={this.onsearchChange} 
           placeholder="Search your digitmon..." />
         <ul>
           {filteredDigimon.map((monster)=>{
