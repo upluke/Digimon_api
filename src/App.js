@@ -1,4 +1,6 @@
 import { Component } from "react";
+import CardList from "./components/card-list/card-list.component";
+
 
 class App extends Component {
   constructor(){
@@ -35,16 +37,8 @@ class App extends Component {
         <input 
           onChange={this.onsearchChange} 
           placeholder="Search your digitmon..." />
-        <ul>
-          {filteredDigimon.map((monster)=>{
-            return (
-              <div key={monster.name}>
-                  <h1 >{monster.name}</h1>
-                  <img src={monster.img} />
-              </div>
-            ) 
-        })}
-        </ul>
+
+        <CardList filteredDigimon={filteredDigimon} />
       </div>
     );
     }
