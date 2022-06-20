@@ -3,11 +3,11 @@ import { Component } from "react";
 
 class CardList extends Component{
     render(){
-        
+        const{filteredDigimon} =this.props
         return (
             <div>        
                 <ul>
-                    {this.props.filteredDigimon.map((monster)=>{
+                    {filteredDigimon.map((monster)=>{
                     return (
                         <div key={monster.name}>
                             <h1 >{monster.name}</h1>
